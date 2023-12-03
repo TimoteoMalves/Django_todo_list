@@ -55,7 +55,7 @@ class TaskDetail(LoginRequiredMixin, DetailView): #inheriting from DetailView
 
 class TaskCreate(LoginRequiredMixin, CreateView):
    model = Task
-   fields = ['title', 'description','complete']  # asking for it to create all fields of our model
+   fields = ['title', 'description','complete', 'priority']  # asking for it to create all fields of our model
    success_url = reverse_lazy('tasks') #navigate back to tasks screen 
 
    #
@@ -65,9 +65,8 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
    model = Task
-   fields = "__all__"
+   fields = ['title', 'description',   'complete', 'priority']
    success_url = reverse_lazy('tasks')
-
 class DeleteView(LoginRequiredMixin, DeleteView):
    model = Task
    context_object_name = "task"
